@@ -33,7 +33,7 @@ include "conexion.php";
         $email = $_POST['email'];
 
         $sql = "UPDATE contactos SET nombre='" . $nombre . "', apellidos='" . $apellidos . "',
-            direccion='" . $direccion . "', telefono='" . $telefono . "', email='" . $email . "'";
+            direccion='" . $direccion . "', telefono='" . $telefono . "', email='" . $email . "' where id='" . $id . "'";
         $resultado = mysqli_query($conexion, $sql);
         if ($resultado) {
             echo "<script language='JavaScript'>
