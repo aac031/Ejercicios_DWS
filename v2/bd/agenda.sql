@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-11-2022 a las 23:37:06
+-- Tiempo de generación: 22-11-2022 a las 08:54:14
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -20,14 +20,16 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `agenda`
 --
+CREATE DATABASE IF NOT EXISTS `agenda` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `agenda`;
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `contacto_empresa`
 --
-
-CREATE TABLE `contacto_empresa` (
+DROP TABLE IF EXISTS `contacto_empresa`;
+CREATE TABLE IF NOT EXISTS `contacto_empresa` (
   `id` int(200) NOT NULL,
   `nombre` varchar(200) NOT NULL,
   `direccion` varchar(200) NOT NULL,
@@ -40,8 +42,8 @@ CREATE TABLE `contacto_empresa` (
 --
 -- Estructura de tabla para la tabla `contacto_persona`
 --
-
-CREATE TABLE `contacto_persona` (
+DROP TABLE IF EXISTS `contacto_persona`;
+CREATE TABLE IF NOT EXISTS `contacto_persona` (
   `id` int(200) NOT NULL,
   `nombre` varchar(200) NOT NULL,
   `apellidos` varchar(200) NOT NULL,
@@ -54,8 +56,8 @@ CREATE TABLE `contacto_persona` (
 --
 -- Estructura de tabla para la tabla `credenciales`
 --
-
-CREATE TABLE `credenciales` (
+DROP TABLE IF EXISTS `credenciales`;
+CREATE TABLE IF NOT EXISTS `credenciales`  (
   `usuario` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -63,6 +65,10 @@ CREATE TABLE `credenciales` (
 --
 -- Volcado de datos para la tabla `credenciales`
 --
+-- Credenciales validas:
+-- usuario: normaluser ; password: usudwes
+-- usuario: adminuser ; password: admindwes
+-- usuario: prueba ; password: 1234
 
 INSERT INTO `credenciales` (`usuario`, `password`) VALUES
 ('normaluser', '$2y$10$kG2p/4hVn6sZKNsTo6Je4uWWdO4cqZii2MBm2LPNuaes3cbNI.os2'),
