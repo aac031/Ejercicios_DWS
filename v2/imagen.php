@@ -1,4 +1,8 @@
 <?php
+session_start();
+if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
+    header("Location: login.php");
+}
 //Si se quiere subir una imagen
 if (isset($_POST['subir_usuario'])) {
     //Recogemos el archivo enviado por el formulario
