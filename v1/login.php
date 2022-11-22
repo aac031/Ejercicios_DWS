@@ -17,7 +17,7 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
     <link rel="stylesheet" href="css/estilos.css">
     <title>Login</title>
 </head>
-
+<!-- Iniciamos Sesión -->
 <body>
     <h1>Inicia sesión</h1>
     <hr>
