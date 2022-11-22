@@ -20,7 +20,7 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
     include "conexion.php";
     ?>
     <hr>
-    <h1>Eliminar contacto: </h1>
+    <h1>Modificar contacto: </h1>
     <?php
     include "modificar_persona.php";
     include "modificar_empresa.php";

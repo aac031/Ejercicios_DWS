@@ -36,6 +36,7 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
             echo "Direccion: " . $datos->direccion . "<br>";
             echo "Telefono: " . $datos->telefono . "<br>";
             echo "<br>";
+     
             $sql = "INSERT INTO contacto_persona VALUES('', '$datos->nombre', '$datos->apellidos', '$datos->direccion', '$datos->telefono')";
             $resultado = mysqli_query($conexion, $sql);
         }
