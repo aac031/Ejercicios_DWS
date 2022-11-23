@@ -1,8 +1,10 @@
 <?php
+// Comprobamos si la sesión está iniciada o no con isset.
 session_start();
 if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
-    // echo "Ya estamos logueados";
+    // Si la sesión no existe, tendremos que loguearnos.
 } else {
+    // Si la sesión ya está iniciada, nos redireccionará a "home.php".
     header("Location: home.php");
 }
 ?>
@@ -17,7 +19,12 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
     <link rel="stylesheet" href="css/estilos.css">
     <title>Login</title>
 </head>
-<!-- Iniciamos Sesión -->
+<!-- Iniciamos Sesión 
+    Introduciremos usuario y contraseña, que serán enviados a "auth.php", donde
+    se comprobará si existen en la base de datos o no. 
+    Usuario= normaluser Password= usudwes
+    Usuario= adminuser Password= admindwes -->
+
 <body>
     <h1>Inicia sesión</h1>
     <hr>
