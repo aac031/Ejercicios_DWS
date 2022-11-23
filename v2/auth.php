@@ -35,7 +35,7 @@ if (isset($_POST['usuario']) && isset($_POST['password'])) {
       $alter_persona = mysqli_query($conexion, $sql_alter_persona);
   
       $sql_modify_persona = "ALTER TABLE `contacto_persona`
-      MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14";
+      MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1";
       $modify_persona = mysqli_query($conexion, $sql_modify_persona);
   
       //Sentencias creacion tabla para contactos de empresas
@@ -56,7 +56,7 @@ if (isset($_POST['usuario']) && isset($_POST['password'])) {
       $alter_empresa = mysqli_query($conexion, $sql_alter_empresa);
   
       $sql_modify_empresa = "ALTER TABLE `contacto_empresa`
-      MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8";
+      MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1";
       $modify_empresa = mysqli_query($conexion, $sql_modify_empresa);
   
       echo "<script language='JavaScript'>

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-11-2022 a las 08:54:14
--- Versión del servidor: 10.4.25-MariaDB
--- Versión de PHP: 8.1.10
+-- Tiempo de generación: 01-11-2022 a las 23:38:47
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -26,38 +26,11 @@ USE `agenda`;
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `contacto_empresa`
---
-DROP TABLE IF EXISTS `contacto_empresa`;
-CREATE TABLE IF NOT EXISTS `contacto_empresa` (
-  `id` int(200) NOT NULL,
-  `nombre` varchar(200) NOT NULL,
-  `direccion` varchar(200) NOT NULL,
-  `telefono` varchar(200) NOT NULL,
-  `email` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `contacto_persona`
---
-DROP TABLE IF EXISTS `contacto_persona`;
-CREATE TABLE IF NOT EXISTS `contacto_persona` (
-  `id` int(200) NOT NULL,
-  `nombre` varchar(200) NOT NULL,
-  `apellidos` varchar(200) NOT NULL,
-  `direccion` varchar(200) NOT NULL,
-  `telefono` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `credenciales`
 --
+
 DROP TABLE IF EXISTS `credenciales`;
-CREATE TABLE IF NOT EXISTS `credenciales`  (
+CREATE TABLE IF NOT EXISTS `credenciales` (
   `usuario` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -65,47 +38,14 @@ CREATE TABLE IF NOT EXISTS `credenciales`  (
 --
 -- Volcado de datos para la tabla `credenciales`
 --
+
 -- Credenciales validas:
 -- usuario: normaluser ; password: usudwes
 -- usuario: adminuser ; password: admindwes
--- usuario: prueba ; password: 1234
 
 INSERT INTO `credenciales` (`usuario`, `password`) VALUES
 ('normaluser', '$2y$10$kG2p/4hVn6sZKNsTo6Je4uWWdO4cqZii2MBm2LPNuaes3cbNI.os2'),
-('adminuser', '$2y$10$73wSQqyAYSbk3YSJ1K0Yu.Tyo0xNvPcPCupGArTRwX5D1jQVzJZO2'),
-('prueba', '$2y$10$TtOMe.nmMP/Xu2zKFh.7k.LkFzLNpbNGB.CnJRvAh7q1kw6UgcTYu');
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `contacto_empresa`
---
-ALTER TABLE `contacto_empresa`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `contacto_persona`
---
-ALTER TABLE `contacto_persona`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `contacto_empresa`
---
-ALTER TABLE `contacto_empresa`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT de la tabla `contacto_persona`
---
-ALTER TABLE `contacto_persona`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+('adminuser', '$2y$10$73wSQqyAYSbk3YSJ1K0Yu.Tyo0xNvPcPCupGArTRwX5D1jQVzJZO2');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
