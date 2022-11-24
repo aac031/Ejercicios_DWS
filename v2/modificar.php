@@ -16,6 +16,7 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 
 <body>
     <?php
+    // LLamamos a header.php y a conexion.php
     include "header.php";
     include "conexion.php";
     ?>

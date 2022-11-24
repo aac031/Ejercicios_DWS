@@ -23,7 +23,7 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 
 <body>
     <?php
-    // Llamos a header y lo mostramos por pantalla.
+    // Llamamos a header y lo mostramos por pantalla.
     include "header.php";
     ?>
     <hr>
@@ -39,8 +39,8 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
         if ($atributo['tipo'] == 'empresa') {
             echo "DATO IMPORTADO: <br>";
             echo "Nombre: " . $datos->nombre . "<br>";
-            echo "Apellidos: " . $datos->direccion . "<br>";
-            echo "Direccion: " . $datos->telefono . "<br>";
+            echo "Direccion: " . $datos->direccion . "<br>";
+            echo "Telefono: " . $datos->telefono . "<br>";
             echo "Email: " . $datos->email . "<br>";
             echo "<br>";
             // Sentencia para insertar los datos importados a la tabla contacto_empresa.
@@ -61,6 +61,7 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
             location.assign('home.php');
             </script>";
     }
+    // Cerramos la conexion con la base de datos.
     mysqli_close($conexion);
     ?>
     <br><br>
