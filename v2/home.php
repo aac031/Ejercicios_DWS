@@ -55,6 +55,7 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
     <!-- A la tabla se le asignará una clase que afectará en su estilo. -->
     <table class="minimalistBlack">
         <thead>
+            <!-- Le damos nombres a las columnas de la tabla. -->
             <tr>
                 <th>Nombre</th>
                 <th>Apellidos</th>
@@ -69,12 +70,14 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
             while ($filas = mysqli_fetch_assoc($resultado)) {
             ?>
                 <tr>
+                    <!-- Dentro de la tabla meteremos todos los datos que nos muestre las consultas hechas en la linea 44. -->
                     <td><?php echo $filas['nombre'] ?></td>
                     <td><?php echo $filas['apellidos'] ?></td>
                     <td><?php echo $filas['direccion'] ?></td>
                     <td><?php echo $filas['telefono'] ?></td>
                 </tr>
             <?php
+            // Cerramos el bucle while.
             }
             ?>
         </tbody>
@@ -86,6 +89,7 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
     <!-- A la tabla se le asignará una clase que afectará en su estilo. -->
     <table class="minimalistBlack">
         <thead>
+            <!-- Le damos nombres a las columnas de la tabla. -->
             <tr>
                 <th>Nombre</th>
                 <th>Direccion</th>
@@ -100,12 +104,14 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
             while ($filas = mysqli_fetch_assoc($resultado2)) {
             ?>
                 <tr>
+                    <!-- Dentro de la tabla meteremos todos los datos que nos muestre las consultas hechas en la linea 49. -->
                     <td><?php echo $filas['nombre'] ?></td>
                     <td><?php echo $filas['direccion'] ?></td>
                     <td><?php echo $filas['telefono'] ?></td>
                     <td><?php echo $filas['email'] ?></td>
                 </tr>
             <?php
+            // Cerramos el bucle while.
             }
             ?>
         </tbody>
