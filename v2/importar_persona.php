@@ -1,6 +1,4 @@
 <?php
-// Comprobamos la existencia de la sesión, si no existe lo enviamos a login.
-// Si la conexion existe, llamamos a 'conexion' y accedemos al fichero XML.
 session_start();
 if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
     header("Location: login.php");
@@ -23,19 +21,14 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 
 <body>
     <?php
-    // Llamamos a header y lo mostramos por pantalla.
     include "header.php";
     ?>
     <hr>
     <h2>Los contactos han sido importados con éxito. </h2>
     <br>
     <?php
-    // Para la tabla contacto_personaa, solo serán importados los datos de los contactos
-    // que tengan como atributo tipo persona.
     foreach ($xml->contacto as $datos) {
-        // Identificaremos el atributo del elemento.
         $atributo = $datos->attributes();
-        // Si el atributo tipo es igual a persona, los datos se introducirán en la tabla contacto_persona
         if ($atributo['tipo'] == 'persona') {
             echo "DATO IMPORTADO: <br>";
             echo "Nombre: " . $datos->nombre . "<br>";
@@ -43,14 +36,11 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
             echo "Direccion: " . $datos->direccion . "<br>";
             echo "Telefono: " . $datos->telefono . "<br>";
             echo "<br>";
-            // Sentencia para insertar los datos importados a la tabla contacto_empresa.
+     
             $sql = "INSERT INTO contacto_persona VALUES('', '$datos->nombre', '$datos->apellidos', '$datos->direccion', '$datos->telefono')";
-            // Ejecutamos la sentencia.
             $resultado = mysqli_query($conexion, $sql);
         }
     }
-    // Si los datos importados son correctamente insertados en la tabla contacto_persona,
-    // se muestra un mensaje al usuario, y si no los inserta también muestra un mensaje.
     if ($resultado) {
         echo "<script language='JavaScript'>
             alert('Contactos importados correctamente.');
@@ -61,7 +51,6 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
             location.assign('home.php');
             </script>";
     }
-    // Cerramos la conexion con la base de datos.
     mysqli_close($conexion);
     ?>
     <br><br>

@@ -1,5 +1,4 @@
 <?php
-// Comprobamos la existencia de la sesión, si no existe lo enviamos a login.
 session_start();
 if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
     header("Location: login.php");
@@ -93,7 +92,6 @@ if (isset($_POST['subir_empresa'])) {
     ?>
     <hr>
     <br>
-    <!-- El usuario podrá subir una imagen para una persona o un logo para una empresa. -->
     <form action="<?php echo $_SERVER['PHP_SELF'] ?>" enctype="multipart/form-data" method="POST">
         <label>Añadir imagen a usuario:</label>
         <input name="archivo" id="archivo" type="file">
