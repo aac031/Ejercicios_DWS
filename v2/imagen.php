@@ -1,35 +1,37 @@
 <?php
+// Comprobamos la existencia de la sesión, si no existe lo enviamos a login.
 session_start();
 if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
     header("Location: login.php");
 }
-//Si se quiere subir una imagen
+
+// Comprobamos si se presiono el boton de subir archivo
 if (isset($_POST['subir_usuario'])) {
-    //Recogemos el archivo enviado por el formulario
+    // Recibimos el archivo enviado por el usuario.
     $archivo = $_FILES['archivo']['name'];
-    //Si el archivo contiene algo y es diferente de vacio
+    // Si el archivo recibido no está vacío.
     if (isset($archivo) && $archivo != "") {
-        //Obtenemos algunos datos necesarios sobre el archivo
+        // Datos necesarios del archivo.
         $tipo = $_FILES['archivo']['type'];
         $tamano = $_FILES['archivo']['size'];
         $temp = $_FILES['archivo']['tmp_name'];
-        //Se comprueba si el archivo a cargar es correcto observando su extensión y tamaño
+        // Comprobamos si el archivo subido es correcto, según su extensión y tamaño.
         if (!((strpos($tipo, "png") || strpos($tipo, "jpg") || strpos($tipo, "pdf")) && ($tamano <= 50000000))) {
+            // Si el archivo no es correcto, el usuario observará un mensaje en pantalla.
             echo "<script language='JavaScript'>
                     alert('La extensión o tamaño de la imagen no es correcta.');
                     location.assign('imagen.php');
                     </script>";
         } else {
-            //Si la imagen es correcta en tamaño y tipo
-            //Se intenta subir al servidor
+            // Si la imagen es correcta
             if (move_uploaded_file($temp, 'uploads/' . $archivo)) {
-                //Mostramos el mensaje de que se ha subido co éxito
+                // Mostramos el mensaje de que se ha subido co éxito
                 echo "<script language='JavaScript'>
                     alert('Se ha subido la imagen correctamente.');
                     location.assign('imagen.php');
                     </script>";
             } else {
-                //Si no se ha podido subir la imagen, mostramos un mensaje de error
+                // Si no se ha podido subir la imagen, mostramos un mensaje de error
                 echo "<script language='JavaScript'>
                     alert('Hubo un error al subir la imagen.');
                     location.assign('imagen.php');
@@ -39,32 +41,33 @@ if (isset($_POST['subir_usuario'])) {
     }
 }
 
+// Comprobamos si se presiono el boton de subir archivo
 if (isset($_POST['subir_empresa'])) {
-    //Recogemos el archivo enviado por el formulario
+    // Recibimos el archivo enviado por el usuario.
     $archivo = $_FILES['archivo']['name'];
-    //Si el archivo contiene algo y es diferente de vacio
+    // Si el archivo recibido no está vacío.
     if (isset($archivo) && $archivo != "") {
-        //Obtenemos algunos datos necesarios sobre el archivo
+        // Datos necesarios del archivo.
         $tipo = $_FILES['archivo']['type'];
         $tamano = $_FILES['archivo']['size'];
         $temp = $_FILES['archivo']['tmp_name'];
-        //Se comprueba si el archivo a cargar es correcto observando su extensión y tamaño
+        // Comprobamos si el archivo subido es correcto, según su extensión y tamaño.
         if (!((strpos($tipo, "png") || strpos($tipo, "jpg") || strpos($tipo, "pdf")) && ($tamano <= 50000000))) {
+            // Si el archivo no es correcto, el usuario observará un mensaje en pantalla.
             echo "<script language='JavaScript'>
                     alert('La extensión o tamaño del logo no es correcto.');
                     location.assign('imagen.php');
                     </script>";
         } else {
-            //Si la imagen es correcta en tamaño y tipo
-            //Se intenta subir al servidor
+            // Si la imagen es correcta
             if (move_uploaded_file($temp, 'uploads/' . $archivo)) {
-                //Mostramos el mensaje de que se ha subido co éxito
+                // Mostramos el mensaje de que se ha subido co éxito
                 echo "<script language='JavaScript'>
                     alert('Se ha subido el logo correctamente.');
                     location.assign('imagen.php');
                     </script>";
             } else {
-                //Si no se ha podido subir la imagen, mostramos un mensaje de error
+                // Si no se ha podido subir la imagen, mostramos un mensaje de error
                 echo "<script language='JavaScript'>
                     alert('Hubo un error al subir el logo.');
                     location.assign('imagen.php');

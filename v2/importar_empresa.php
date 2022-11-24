@@ -6,6 +6,7 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
     header("Location: login.php");
 } else {
     require "conexion.php";
+    // Interpretaremos el xml.
     $xml = simplexml_load_file("bd/agenda.xml");
 }
 ?>
@@ -50,17 +51,18 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
         }
     }
     // Si los datos importados son correctamente insertados en la tabla contacto_empresa,
-    // se muestra un mensaje al usuario, y si no los inserta también muestra un mensaje.
+    // se muestra un mensaje al usuario, y si no los importa también muestra un mensaje.
     if ($resultado) {
         echo "<script language='JavaScript'>
             alert('Contactos importados correctamente.');
             </script>";
     } else {
         echo "<script language='JavaScript'>
-            alert('No se han podido importar los datos, ya existen o son erróneos.');
+            alert('No se han podido importar los datos, son erróneos.');
             location.assign('home.php');
             </script>";
     }
+    // Cerramos la conexion con la base de datos.
     mysqli_close($conexion);
     ?>
     <br><br>
