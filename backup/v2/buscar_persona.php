@@ -3,7 +3,6 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
     header("Location: login.php");
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,26 +19,26 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
     include "conexion.php";
     ?>
     <hr>
-    <h1>Buscar contacto empresa: </h1>
+    <h1>Buscar contacto de persona: </h1>
     <form action="<?= $_SERVER['PHP_SELF'] ?>" method="POST">
-        <label>Nombre de empresa: </label>
+        <label>Nombre de persona: </label>
         <input type="text" name="nombre">
-        <input type="submit" name="envio2" value="Buscar">
+        <input type="submit" name="envio1" value="Buscar">
     </form>
     <br>
-    <h2>Lista de contactos de empresas:</h2>
+    <h2>Lista de contactos de personas:</h2>
     <table class="minimalistBlack">
         <thead>
             <tr>
                 <th>Nombre</th>
+                <th>Apellidos</th>
                 <th>Direccion</th>
                 <th>Telefono</th>
-                <th>Email</th>
             </tr>
         </thead>
         <tbody>
             <?php
-            if (isset($_POST['envio2'])) {
+            if (isset($_POST['envio1'])) {
                 $nombre = $_POST['nombre'];
 
                 if (empty($_POST['nombre'])) {
@@ -48,7 +47,7 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
                     location.assign('buscar.php');
                     </script>";
                 } else {
-                    $sql = "SELECT * FROM contacto_empresa WHERE nombre like '%" . $nombre . "%'";
+                    $sql = "SELECT * FROM contacto_persona WHERE nombre like '%" . $nombre . "%'";
                 }
                 $resultado = mysqli_query($conexion, $sql);
 
@@ -58,18 +57,19 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
                     location.assign('buscar.php');
                     </script>";
                 }
+
                 while ($filas = mysqli_fetch_assoc($resultado)) {
             ?>
                     <tr>
                         <td><?php echo $filas['nombre'] ?></td>
+                        <td><?php echo $filas['apellidos'] ?></td>
                         <td><?php echo $filas['direccion'] ?></td>
                         <td><?php echo $filas['telefono'] ?></td>
-                        <td><?php echo $filas['email'] ?></td>
                     </tr>
                 <?php
                 }
             } else {
-                $sql = "SELECT * FROM contacto_empresa";
+                $sql = "SELECT * FROM contacto_persona";
                 $resultado = mysqli_query($conexion, $sql);
                 while ($filas = mysqli_fetch_assoc($resultado)) {
                 ?>

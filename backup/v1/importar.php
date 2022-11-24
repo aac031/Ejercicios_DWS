@@ -27,19 +27,16 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
     <h2>Los contactos han sido importados con éxito. </h2>
     <br>
     <?php
-    foreach ($xml->contacto as $datos) {
-        $atributo = $datos->attributes();
-        if ($atributo['tipo'] == 'persona') {
-            echo "DATO IMPORTADO: <br>";
-            echo "Nombre: " . $datos->nombre . "<br>";
-            echo "Apellidos: " . $datos->apellidos . "<br>";
-            echo "Direccion: " . $datos->direccion . "<br>";
-            echo "Telefono: " . $datos->telefono . "<br>";
-            echo "<br>";
-     
-            $sql = "INSERT INTO contacto_persona VALUES('', '$datos->nombre', '$datos->apellidos', '$datos->direccion', '$datos->telefono')";
-            $resultado = mysqli_query($conexion, $sql);
-        }
+    foreach ($xml as $contacto) {
+        echo "DATO IMPORTADO: <br>";
+        echo "Nombre: " . $contacto->nombre . "<br>";
+        echo "Apellidos: " . $contacto->apellidos . "<br>";
+        echo "Direccion: " . $contacto->direccion . "<br>";
+        echo "Telefono: " . $contacto->telefono . "<br>";
+        echo "Email: " . $contacto->email . "<br>";
+        echo "<br>";
+        $sql = "INSERT INTO contactos VALUES('', '$contacto->nombre', '$contacto->apellidos', '$contacto->direccion', '$contacto->telefono', '$contacto->email')";
+        $resultado = mysqli_query($conexion, $sql);
     }
     if ($resultado) {
         echo "<script language='JavaScript'>
@@ -48,15 +45,10 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
     } else {
         echo "<script language='JavaScript'>
             alert('No se han podido importar los datos, ya existen o son erróneos.');
-            location.assign('home.php');
             </script>";
     }
     mysqli_close($conexion);
     ?>
-    <br><br>
-    <form action="home.php" method="POST">
-        <input type="submit" name="voler" value="Volver">
-    </form>
 </body>
 
 </html>

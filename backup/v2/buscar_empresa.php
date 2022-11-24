@@ -3,7 +3,6 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
     header("Location: login.php");
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 

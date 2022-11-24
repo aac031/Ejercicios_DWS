@@ -1,5 +1,4 @@
 <?php
-// Comprobamos la existencia de la sesión, si no existe lo enviamos a login.
 session_start();
 if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
     header("Location: login.php");
@@ -19,40 +18,30 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 
 <body>
     <?php
-    // Llamamos a header
     include "header.php";
     ?>
     <hr>
-    <!-- Le damos la bienvenida al usuario -->
     <h1>Bienvenido: </h1>
-    <!-- El usuario podrá importar contactos de personas ya existentes en el archivo XML. -->
     <form action="importar_persona.php" method="POST">
         <label for="usuario">Importar contactos de personas: </label>
         <input type="submit" name="importar" value="Importar">
     </form>
     <br><br>
-    <!-- El usuario podrá importar contactos de empresas ya existentes en el archivo XML. -->
     <form action="importar_empresa.php" method="POST">
         <label for="usuario">Importar contactos de empresas: </label>
         <input type="submit" name="importar" value="Importar">
     </form>
 
     <?php
-    // Llamamos a "conexion.php"
     include "conexion.php";
-    // Con esta consulta mostraremos todos los contactos de personas que hayan en la base de datos.
     $sql = "SELECT * FROM contacto_persona";
-    // Ejecutamos la sentencia.
     $resultado = mysqli_query($conexion, $sql);
 
-    // Con esta consulta mostraremos todos los contactos de empresas que hayan en la base de datos.
     $sql = "SELECT * FROM contacto_empresa";
-    // Ejecutamos la sentencia.
     $resultado2 = mysqli_query($conexion, $sql);
     ?>
-    <!-- Creamos una tabla en la cual mostraremos todos los contactos con sus respectivos datos. -->
+
     <h2>Lista de contactos de personas:</h2>
-    <!-- A la tabla se le asignará una clase que afectará en su estilo. -->
     <table class="minimalistBlack">
         <thead>
             <tr>
@@ -64,8 +53,6 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
         </thead>
         <tbody>
             <?php
-            // En la tabla creada anteriormente, se mostrará siempre los datos que se encuentren en la base de datos.
-            // Si no hay datos, en la base simplemente estará vacía la tabla.
             while ($filas = mysqli_fetch_assoc($resultado)) {
             ?>
                 <tr>
@@ -81,9 +68,7 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
     </table>
     <br>
     <hr>
-    <!-- Creamos una tabla en la cual mostraremos todos los contactos con sus respectivos datos. -->
     <h2>Lista de contactos de empresas:</h2>
-    <!-- A la tabla se le asignará una clase que afectará en su estilo. -->
     <table class="minimalistBlack">
         <thead>
             <tr>
@@ -95,8 +80,6 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
         </thead>
         <tbody>
             <?php
-            // En la tabla creada anteriormente, se mostrará siempre los datos que se encuentren en la base de datos.
-            // Si no hay datos, en la base simplemente estará vacía la tabla.
             while ($filas = mysqli_fetch_assoc($resultado2)) {
             ?>
                 <tr>
@@ -111,7 +94,6 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
         </tbody>
     </table>
     <?php
-    // Cerramos la conexion con la base de datos.
     mysqli_close($conexion);
     ?>
 </body>

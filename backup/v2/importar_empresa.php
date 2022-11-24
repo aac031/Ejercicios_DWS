@@ -29,15 +29,14 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
     <?php
     foreach ($xml->contacto as $datos) {
         $atributo = $datos->attributes();
-        if ($atributo['tipo'] == 'persona') {
+        if ($atributo['tipo'] == 'empresa') {
             echo "DATO IMPORTADO: <br>";
             echo "Nombre: " . $datos->nombre . "<br>";
-            echo "Apellidos: " . $datos->apellidos . "<br>";
-            echo "Direccion: " . $datos->direccion . "<br>";
-            echo "Telefono: " . $datos->telefono . "<br>";
+            echo "Apellidos: " . $datos->direccion . "<br>";
+            echo "Direccion: " . $datos->telefono . "<br>";
+            echo "Email: " . $datos->email . "<br>";
             echo "<br>";
-     
-            $sql = "INSERT INTO contacto_persona VALUES('', '$datos->nombre', '$datos->apellidos', '$datos->direccion', '$datos->telefono')";
+            $sql = "INSERT INTO contacto_empresa VALUES('', '$datos->nombre', '$datos->direccion', '$datos->direccion', '$datos->email')";
             $resultado = mysqli_query($conexion, $sql);
         }
     }
