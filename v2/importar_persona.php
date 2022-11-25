@@ -1,4 +1,6 @@
 <?php
+// Comprobamos la existencia de la sesión, si no existe lo enviamos a login.
+// Si la conexion existe, llamamos a 'conexion' y accedemos al fichero XML.
 session_start();
 if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
     header("Location: login.php");

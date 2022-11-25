@@ -40,12 +40,12 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
     <?php
     // Llamamos a "conexion.php"
     include "conexion.php";
-    // Con esta consulta mostraremos todos los contactos de personas que hayan en la base de datos.
+    // Con esta consulta mostraremos todos los contactos de personas que hayan en la base de datos
     $sql = "SELECT * FROM contacto_persona";
-    // Ejecutamos la sentencia.
+    // Ejecutamos la sentencia
     $resultado = mysqli_query($conexion, $sql);
 
-    // Con esta consulta mostraremos todos los contactos de empresas que hayan en la base de datos.
+    // Con esta consulta mostraremos todos los contactos de empresas que hayan en la base de datos
     $sql = "SELECT * FROM contacto_empresa";
     // Ejecutamos la sentencia.
     $resultado2 = mysqli_query($conexion, $sql);
@@ -77,7 +77,7 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
                     <td><?php echo $filas['telefono'] ?></td>
                 </tr>
             <?php
-            // Cerramos el bucle while.
+            // Cerramos el bucle while
             }
             ?>
         </tbody>

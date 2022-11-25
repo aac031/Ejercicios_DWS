@@ -1,4 +1,5 @@
 <?php
+// Comprobamos la existencia de la sesión, si no existe lo enviamos a login.
 session_start();
 if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
     header("Location: login.php");
@@ -17,12 +18,13 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 
 <body>
     <?php
+    // Llamamos a las paginas que necesitaremos
     include "header.php";
     
     include "conexion.php";
 
     include "buscar_persona.php";
-    
+
     include "buscar_empresa.php";
     ?>
 </body>

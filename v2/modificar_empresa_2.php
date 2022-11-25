@@ -1,9 +1,11 @@
 <?php
+// Comprobamos la existencia de la sesión, si no existe lo enviamos a login.
 session_start();
 if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
     header("Location: login.php");
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,48 +19,64 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 
 <body>
     <?php
+    // Llamamos al header y lo mostramos
     include "header.php";
+    // Nos conectamos a la base de datos
     include "conexion.php";
     ?>
     <hr>
     <?php
+    // Comprobamos si se han enviado los datos
     if (isset($_POST['envio'])) {
+        // Asignamos variables a los datos
         $id = $_POST['id'];
         $nombre = $_POST['nombre'];
         $direccion = $_POST['direccion'];
         $telefono = $_POST['telefono'];
         $email = $_POST['email'];
 
+        // Realizamos la sentencia con los datos enviados y los modificamos con la siguiente sentencia
         $sql = "UPDATE contacto_empresa SET nombre='" . $nombre . "', direccion='" . $direccion . "', 
         telefono='" . $telefono . "', email='" . $email . "' where id='" . $id . "'";
+        // Ejecutamos la sentencia 
         $resultado = mysqli_query($conexion, $sql);
+        // Si los datos han sido modificado enviamos un mensaje al usuario
         if ($resultado) {
             echo "<script language='JavaScript'>
                 alert('El contacto fue modificado con éxito.');
                 location.assign('modificar.php');
                 </script>";
         } else {
+            // Si no han sido modificados enviamos un mensaje de error
             echo "<script language='JavaScript'>
                 alert('Hubo un error al modificar el contacto.');
                 location.assign('modificar.php');
                 </script>";
         }
+        // Cerramos la conexion
         mysqli_close($conexion);
     } else {
+        // Asignamos una variable a la id enviada en modificar_empresa
         $id = $_GET['id'];
+        // Sentencia para mostrar los datos del contacto según su id
         $sql = "SELECT * FROM contacto_empresa WHERE id= '" . $id . "'";
+        // Ejecutamos la sentencia
         $resultado = mysqli_query($conexion, $sql);
 
+        // Devolvemos un array asociativo que son el resultado de la sentencia
         $fila = mysqli_fetch_assoc($resultado);
+        // Le asignamos variables a los valores de cada campo de la tabla
         $nombre = $fila['nombre'];
         $direccion = $fila['direccion'];
         $telefono = $fila['telefono'];
         $email = $fila['email'];
 
+        // Cerramos la conexion
         mysqli_close($conexion);
     ?>
         <h2>Modificar contacto: </h2>
         <br>
+        <!-- Enviamos los datos a la misma pagina -->
         <form action="<?= $_SERVER['PHP_SELF'] ?>" method="POST">
             <label for="nombre">Nombre: </label>
             <input type="text" name="nombre" value="<?php echo $nombre; ?>">
