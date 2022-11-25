@@ -66,7 +66,7 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
         <tbody>
             <?php
             // En la tabla creada anteriormente, se mostrará siempre los datos que se encuentren en la base de datos.
-            // Si no hay datos, en la base simplemente estará vacía la tabla.
+            // Si no hay datos en la base simplemente estará vacía la tabla.
             while ($filas = mysqli_fetch_assoc($resultado)) {
             ?>
                 <tr>

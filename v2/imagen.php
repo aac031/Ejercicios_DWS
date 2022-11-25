@@ -91,10 +91,12 @@ if (isset($_POST['subir_empresa'])) {
 
 <body>
     <?php
+    // Llamamos a header y lo mostramos por pantalla.
     include "header.php";
     ?>
     <hr>
     <br>
+    <!-- El usuario podrá subir una imagen o un logo. -->
     <form action="<?php echo $_SERVER['PHP_SELF'] ?>" enctype="multipart/form-data" method="POST">
         <label>Añadir imagen a usuario:</label>
         <input name="archivo" id="archivo" type="file">

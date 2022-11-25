@@ -24,7 +24,7 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 
 <body>
     <?php
-    // Llamos a header y lo mostramos por pantalla.
+    // Llamamos a header y lo mostramos por pantalla.
     include "header.php";
     ?>
     <hr>
